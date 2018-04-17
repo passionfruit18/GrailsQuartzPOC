@@ -5,21 +5,27 @@ import org.modelcatalogue.core.DataModel
 
 import java.text.SimpleDateFormat
 
-@Transactional
 class ChangeService {
+
+    DataModelGormService dataModelGormService
+    ChangeGormService changeGormService
+
     def addNewChangeToDataModel() {
         String dmName = 'Test Data Model'
-        DataModel dm = DataModel.findByName(dmName)
-        if (!dm) {
-            dm = new DataModel(name: dmName)
-            dm.save(flush:true)
+        DataModel dm = dataModelGormService.findByName(dmName)
+        if ( !dm ) {
+            dm = dataModelGormService.save(dmName)
         }
-        SimpleDateFormat sdf = new SimpleDateFormat('dd/MM/yyyy HH:mm:ss')
-        Change change = new Change(description: "New change at ${sdf.format(new Date())}", dataModel: dm)
-        change.save(flush:true)
-        dm.changes.add(change)
-        dm.save(flush:true)
+
+        if ( !dm.hasErrors() ) {
+            SimpleDateFormat sdf = new SimpleDateFormat('dd/MM/yyyy HH:mm:ss')
+            final String description =  "New change at ${sdf.format(new Date())}"
+            Change change = changeGormService.save(description, dm)
+        }
+
+
     }
+
     def serviceMethod() {
 
     }
