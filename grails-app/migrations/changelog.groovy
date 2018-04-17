@@ -1,6 +1,6 @@
 databaseChangeLog = {
 
-	changeSet(author: "james (generated)", id: "1523969839579-1") {
+	changeSet(author: "james (generated)", id: "1523971138599-1") {
 		createTable(tableName: "change") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "changePK")
@@ -9,10 +9,14 @@ databaseChangeLog = {
 			column(name: "version", type: "bigint") {
 				constraints(nullable: "false")
 			}
+
+			column(name: "data_model_id", type: "bigint") {
+				constraints(nullable: "false")
+			}
 		}
 	}
 
-	changeSet(author: "james (generated)", id: "1523969839579-2") {
+	changeSet(author: "james (generated)", id: "1523971138599-2") {
 		createTable(tableName: "data_model") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "data_modelPK")
@@ -28,31 +32,13 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "james (generated)", id: "1523969839579-3") {
-		createTable(tableName: "data_model_change") {
-			column(name: "data_model_changes_id", type: "bigint")
-
-			column(name: "change_id", type: "bigint")
+	changeSet(author: "james (generated)", id: "1523971138599-4") {
+		createIndex(indexName: "FK_n9y2c2y03j4hrc3n6lr02j1ey", tableName: "change") {
+			column(name: "data_model_id")
 		}
 	}
 
-	changeSet(author: "james (generated)", id: "1523969839579-6") {
-		createIndex(indexName: "FK_c3o7aebcuw2u76rm422xkvrrs", tableName: "data_model_change") {
-			column(name: "data_model_changes_id")
-		}
-	}
-
-	changeSet(author: "james (generated)", id: "1523969839579-7") {
-		createIndex(indexName: "FK_fgil01smvhwpdyrd3mhmx9vxh", tableName: "data_model_change") {
-			column(name: "change_id")
-		}
-	}
-
-	changeSet(author: "james (generated)", id: "1523969839579-4") {
-		addForeignKeyConstraint(baseColumnNames: "change_id", baseTableName: "data_model_change", constraintName: "FK_fgil01smvhwpdyrd3mhmx9vxh", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "change", referencesUniqueColumn: "false")
-	}
-
-	changeSet(author: "james (generated)", id: "1523969839579-5") {
-		addForeignKeyConstraint(baseColumnNames: "data_model_changes_id", baseTableName: "data_model_change", constraintName: "FK_c3o7aebcuw2u76rm422xkvrrs", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "data_model", referencesUniqueColumn: "false")
+	changeSet(author: "james (generated)", id: "1523971138599-3") {
+		addForeignKeyConstraint(baseColumnNames: "data_model_id", baseTableName: "change", constraintName: "FK_n9y2c2y03j4hrc3n6lr02j1ey", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "data_model", referencesUniqueColumn: "false")
 	}
 }

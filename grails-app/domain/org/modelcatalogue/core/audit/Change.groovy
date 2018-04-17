@@ -1,7 +1,11 @@
 package org.modelcatalogue.core.audit
 
-class Change {
+import org.modelcatalogue.core.DataModel
 
+class Change {
+    String description
+
+    static belongsTo = [dataModel: DataModel]
     static constraints = {
     }
 }

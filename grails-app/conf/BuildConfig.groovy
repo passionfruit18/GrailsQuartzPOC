@@ -55,6 +55,9 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
+
+        // interactive console
+        runtime ':console:1.5.12'
         // plugins for the build system only
         build ":tomcat:7.0.70" // or ":tomcat:8.0.22"
 

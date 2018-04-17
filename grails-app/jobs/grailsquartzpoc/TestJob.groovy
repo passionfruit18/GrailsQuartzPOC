@@ -3,8 +3,9 @@ package grailsquartzpoc
 
 
 class TestJob {
+
     static triggers = {
-      simple name: "mySimpleTrigger", repeatInterval: 1000l // execute job once in 5 seconds
+      simple name: "mySimpleTrigger", repeatInterval: 10000l // execute job once in 5 seconds
     }
 
     def group = "MyGroup"

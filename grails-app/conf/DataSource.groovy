@@ -24,7 +24,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/${databaseName}?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8"
             username = 'metadata'
             password = 'metadata'
-            dbCreate = "update"
+            dbCreate = "create-drop"
             properties {
                 maxActive = -1
                 minEvictableIdleTimeMillis=1800000
