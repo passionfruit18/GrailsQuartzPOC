@@ -21,9 +21,9 @@ environments {
             driverClassName = "com.mysql.jdbc.Driver"
             dialect='org.hibernate.dialect.MySQL5InnoDBDialect'
             databaseName = 'grails_quartz_poc_db'
-            url = "jdbc:mysql://localhost:3306/${databaseName}?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8"
-            username = 'metadata'
-            password = 'metadata'
+            url = "jdbc:mysql://localhost:8889/${databaseName}?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8"
+            username = 'root'
+            password = 'root'
             dbCreate = "create-drop"
             properties {
                 maxActive = -1
