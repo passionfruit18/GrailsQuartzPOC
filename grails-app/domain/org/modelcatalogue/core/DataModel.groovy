@@ -9,7 +9,7 @@ class DataModel {
     String name
 
     static constraints = {
-        name nullable: false
+        name nullable: false, unique: true
         changes nullable: true
     }
 }

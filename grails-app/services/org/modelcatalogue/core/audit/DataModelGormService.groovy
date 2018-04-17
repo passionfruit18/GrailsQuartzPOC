@@ -18,7 +18,8 @@ class DataModelGormService {
         dataModel
     }
 
-    DataModel findByName(String nameParam ) {
-        DataModel.where { name == nameParam }.get()
+    @Transactional(readOnly = true)
+    DataModel findByName(String name ) {
+        DataModel.findByName(name)
     }
 }
