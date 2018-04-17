@@ -5,5 +5,5 @@ build
 .classpath
 .project
 *.iml
-
+target
 *~
